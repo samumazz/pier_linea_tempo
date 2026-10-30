@@ -1,83 +1,43 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Europa in trasformazione — cronologia per periodi</title>
+<title>Cronologia Storica</title>
 <style>
-:root{color-scheme:dark;--bg:#0a1020;--text:#eef4ff;--muted:#b8c7e1;--line:#354767;--green:#62d8b5;--blue:#83b7ff;--red:#ff8798;--gold:#ffd17b;--purple:#c8a5ff}
+:root{color-scheme:dark;--bg:#0a1020;--text:#eef4ff;--muted:#b8c7e1;--green:#7cb342;--purple:#ab47bc;--brown:#8d6e63;--blue:#42a5f5;--red:#ef5350}
 *{box-sizing:border-box}
-html, body { height: 100vh; margin: 0; padding: 0; overflow: hidden; font: 14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:radial-gradient(ellipse at 15% 0%,#1b3154 0,transparent 36%),radial-gradient(ellipse at 92% 10%,#2a2147 0,transparent 32%),var(--bg); color:var(--text); display: flex; flex-direction: column; }
+html, body { height: 100vh; margin: 0; padding: 0; overflow: hidden; font: 13px/1.4 system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); display: flex; flex-direction: column; }
 
-header{padding:12px 20px;background:linear-gradient(115deg,#10192d,#183055 55%,#292047);border-bottom:1px solid #35476a; flex-shrink: 0;}
-.kicker{color:#a9c8ff;text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:850}
-h1{font-size:clamp(18px,2vw,24px);line-height:1.1;margin:2px 0;background:linear-gradient(90deg,#fff,#bdd7ff 58%,#d8c5ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-header p{color:#c5d2e9;margin:2px 0 0; font-size: 12px;}
+header{padding:10px 16px;background:#10192d;border-bottom:1px solid #35476a; flex-shrink: 0; display:flex; justify-position:space-between; align-items:center;}
+h1{font-size:18px;margin:0;color:#fff}
 
-main{padding:12px 20px; width:100%; flex: 1; display: flex; flex-direction: column; overflow: hidden;}
-.intro{color:#c0cde3;margin:0 0 10px; font-size: 12px; flex-shrink: 0;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px; flex: 1; overflow-y: auto;}
-.period{position:relative;text-align:left;padding:12px;border:1px solid #354767;border-radius:12px;background:linear-gradient(145deg,#192843,#111a2d);color:var(--text);cursor:pointer;overflow:hidden;transition:transform .16s,border-color .16s}.period:hover{transform:translateY(-2px);border-color:#a7c7ff}.period:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}.period .symbol{font-size:16px}.period h2{font-size:15px;margin:3px 0 2px}.period p{color:#b8c8e2;margin:0 0 6px; font-size: 11px; line-height: 1.25;}.count{font-size:10px;color:#e0e9fb;border:1px solid #405476;border-radius:999px;padding:2px 6px;display:inline-block}.go{float:right;color:#c4d9ff;font-weight:800; font-size: 11px;}
+main{padding:10px; width:100%; flex: 1; display: flex; flex-direction: column; overflow: hidden;}
 
-.hidden{display:none!important}
-#detail{ display: flex; flex-direction: column; flex: 1; height: 100%; overflow: hidden; }
-.view-head{display:flex;align-items:center;gap:10px;margin:0 0 8px; flex-shrink: 0;}
-.view-head h2{margin:0;font-size: 18px;}
-.view-head p{margin:0;color:var(--muted); font-size: 11px;}
-.view-head .titlegroup{flex:1;}
-.back,.searchline input,.scroll-btn{font:inherit;border:1px solid #354462;border-radius:6px;padding:4px 8px;background:#151f34;color:var(--text); font-size: 12px;}
-.back{cursor:pointer;font-weight:750; white-space: nowrap;}.back:hover{border-color:#8bb8ff}
-.searchline{display:flex;gap:8px;margin:0 0 8px; flex-shrink: 0;}
-.searchline input{flex:1;}
-
-.legend{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 8px; flex-shrink: 0;}
-.chip{border:1px solid #354767;border-radius:999px;padding:2px 8px;color:#dce7fa;font-size:10px}
-.chip i{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;background:var(--accent)}
-
-.timeline-box{border:1px solid #30415f;border-radius:10px;overflow:hidden;background:#0e1728;box-shadow:0 8px 24px #0003; flex: 1; display: flex; flex-direction: column; min-height: 0;}
-.timeline-top{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:6px 12px;background:linear-gradient(90deg,#182744,#1d1c38);border-bottom:1px solid #2d3b59;color:#b6c7e5;font-size:11px; flex-shrink: 0;}
+.timeline-box{border:1px solid #30415f;border-radius:8px;background:#0e1728; flex: 1; display: flex; flex-direction: column; min-height: 0;}
+.timeline-top{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;background:#182744;border-bottom:1px solid #2d3b59;font-size:11px; flex-shrink: 0;}
 .scroll-controls{display:flex;gap:4px}
-.scroll-btn{cursor:pointer;padding:2px 8px;font-size:11px}
+.scroll-btn{cursor:pointer;padding:3px 10px;font-size:11px;border:1px solid #354462;border-radius:4px;background:#151f34;color:var(--text);}
 .scroll-btn:hover{background:#233352}
 
-.scroll{overflow-x:auto;overflow-y:auto;flex:1;scrollbar-color:#607ba7 #182238;overscroll-behavior-x:contain;scroll-behavior:smooth; position: relative;}
-.board{position:relative;padding:0 20px 12px; min-height: 100%;}
-.axis{height:34px;position:sticky;top:0;z-index:8;background:#0e1728;border-bottom:1px solid #526482;margin:0 0 6px 0}
-.tick{position:absolute;bottom:0;height:10px;border-left:1px solid #526482;padding-left:4px;font-size:10px;color:#c0d0eb}
-.tick span{position:absolute;bottom:10px;left:2px;font-weight:850;color:#edf3ff}
+.scroll{overflow-x:auto;overflow-y:auto;flex:1;scrollbar-color:#607ba7 #182238;scroll-behavior:smooth; position: relative;}
+.board{position:relative;padding:0 20px 20px; min-height: 100%;}
+.axis{height:30px;position:sticky;top:0;z-index:8;background:#0e1728;border-bottom:1px solid #526482;}
+.tick{position:absolute;bottom:0;height:8px;border-left:1px solid #526482;padding-left:3px;font-size:10px;color:#c0d0eb}
+.tick span{position:absolute;bottom:8px;left:2px;font-weight:700;}
 
-.event-area{position:relative;min-height:300px;background:repeating-linear-gradient(90deg,transparent 0,transparent 499px,#ffffff05 500px)}
-.event-card{position:absolute;width:200px;min-height:72px;text-align:left;padding:8px 10px;border:1px solid #4a5f80;border-left:3px solid var(--accent);border-radius:6px;background:linear-gradient(145deg,#1c2b45,#131e32);color:#f2f6ff;cursor:pointer;box-shadow:0 3px 8px #0003;line-height:1.2; font-size: 11px;}
-.event-card:hover{border-color:#d2e2ff;filter:brightness(1.12);z-index:5}
-.event-card .date{display:block;font-size:10px;font-weight:850;color:#c3d7f7;margin-bottom:2px}
-.event-card .event-title{display:block;font-size:11px;font-weight:750; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
-.event-card .flag{display:block;font-size:9px;margin-top:4px;color:#d7e2f6}
-
-.overlay{position:fixed;inset:0;background:#020612d9;display:none;align-items:center;justify-content:center;padding:16px;z-index:100;backdrop-filter:blur(5px)}
-.overlay.open{display:flex}
-.modal{width:min(540px,100%);max-height:85vh;overflow:auto;background:linear-gradient(145deg,#1b2942,#121b2e);border:1px solid #405578;border-radius:12px;padding:16px;box-shadow:0 24px 80px #0008}
-.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:start}
-.modal h3{margin:2px 0 8px;font-size:18px;line-height:1.15}
-.modal p{color:#d0daed; font-size: 13px; line-height: 1.4;}
-.close{font-size:14px;padding:3px 6px;border:1px solid #354462;border-radius:6px;background:#151f34;color:var(--text);cursor:pointer}
-.modal-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#9fb3d6;font-weight:800}
-.flags{font-size:15px}
-.meta{font-size:11px;color:#b9c8e1;margin-top:10px}
-footer{text-align:center;font-size:10px;color:#8392ae;padding:6px; flex-shrink: 0;}
+.event-area{position:relative;min-height:550px;background:repeating-linear-gradient(90deg,transparent 0,transparent 499px,#ffffff05 500px)}
+.event-card{position:absolute;width:220px;padding:6px 8px;border:1px solid #4a5f80;border-left:4px solid var(--accent);border-radius:5px;background:#131e32;color:#f2f6ff;line-height:1.2; font-size: 11px;}
+.event-card .date{display:block;font-size:10px;font-weight:800;color:#c3d7f7;margin-bottom:2px}
+.event-card .event-title{display:block;font-size:11px;font-weight:700;}
 </style></head><body>
-<header><div class="kicker">Atlante storico interattivo</div><h1>Europa in trasformazione</h1><p>Dal movimento hussita alla pace di Vestfalia: una cronologia organizzata per periodi.</p></header>
+
+<header><h1>Cronologia Storica (1517 - 1648)</h1></header>
 <main>
-<section id="home"><p class="intro">Seleziona un periodo cronologico per visualizzarne la linea del tempo orizzontale.</p>
-<div class="legend">
-<span class="chip" style="--accent:var(--blue)"><i></i>Religione e Riforma</span><span class="chip" style="--accent:var(--red)"><i></i>Guerre e conflitti</span><span class="chip" style="--accent:var(--green)"><i></i>Politica e monarchie</span><span class="chip" style="--accent:var(--gold)"><i></i>Esplorazioni ed economia</span><span class="chip" style="--accent:var(--purple)"><i></i>Cultura e istituzioni</span>
-</div><div id="periodGrid" class="grid"></div></section>
-<section id="detail" class="hidden"><div class="view-head"><button class="back" id="back">← Tutti i periodi</button><div class="titlegroup"><h2 id="periodTitle"></h2><p id="periodDesc"></p></div></div>
-<div class="searchline"><input id="search" type="search" placeholder="Cerca un evento in questo periodo…"></div>
 <div class="timeline-box">
   <div class="timeline-top">
-    <span>Usa le frecce o trascina orizzontalmente per scorrere le date (sinistra / destra)</span>
+    <span>Scorri orizzontalmente per esplorare le date</span>
     <div class="scroll-controls">
-      <button class="scroll-btn" id="scrollLeft">◀ Scorri Sinistra</button>
-      <button class="scroll-btn" id="scrollRight">Scorri Destra ▶</button>
+      <button class="scroll-btn" id="scrollLeft">◀ Sinistra</button>
+      <button class="scroll-btn" id="scrollRight">Destra ▶</button>
     </div>
-    <span id="count"></span>
   </div>
   <div class="scroll" id="scroll">
     <div class="board" id="board">
@@ -86,171 +46,104 @@ footer{text-align:center;font-size:10px;color:#8392ae;padding:6px; flex-shrink: 
     </div>
   </div>
 </div>
-</section></main>
-<div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><article class="modal"><div class="modal-head"><div><div class="modal-label" id="modalDate"></div><h3 id="modalTitle"></h3></div><button class="close" id="close" aria-label="Chiudi">✕</button></div><div id="modalFlags" class="flags"></div><p id="modalBody"></p><div id="modalMeta" class="meta"></div></article></div>
-<footer>Linea del tempo didattica</footer>
+</main>
+
 <script>
+// Dati presi esclusivamente dall'immagine fornita
 const events = [
-[1415,1415,"Jan Hus si reca al Concilio di Costanza; viene condannato e arso come eretico","religione","🇨🇿","Boemia / Sacro Romano Impero","Il predicatore Jan Hus contestava aspetti della Chiesa del suo tempo. Il Concilio di Costanza lo condannò per eresia e la sua morte contribuì a innescare il movimento hussita in Boemia."],
-[1419,1436,"Lunga rivolta degli hussiti","guerra","🇨🇿 🇩🇪","Boemia e territori vicini","Dopo la morte di Hus, gruppi hussiti si opposero all’autorità ecclesiastica e alle campagne militari contro di loro. Il conflitto intrecciò motivazioni religiose, politiche e sociali."],
-[1517,1517,"Martin Lutero rende pubbliche le 95 tesi","religione","🇩🇪","Wittenberg, Sacro Romano Impero","Le tesi criticavano soprattutto la predicazione delle indulgenze e avviarono una controversia che si trasformò in una frattura duratura nella cristianità occidentale."],
-[1519,1519,"Elezione di Carlo V al titolo imperiale","politica","🇩🇪 🇪🇸","Sacro Romano Impero e monarchia spagnola","Carlo d’Asburgo fu eletto imperatore grazie a una complessa competizione dinastica e finanziaria. I suoi vasti domini lo posero al centro dei conflitti politici e religiosi europei."],
-[1521,1521,"Dieta di Worms e bando di Lutero","religione","🇩🇪","Worms, Sacro Romano Impero","Davanti alla dieta imperiale, Lutero non ritrattò le proprie posizioni. Carlo V lo mise al bando, anche se la sua protezione da parte di alcuni principi ne rese possibile la sopravvivenza politica."],
-[1522,1522,"Pubblicazione del Nuovo Testamento in tedesco di Lutero","cultura","🇩🇪","Sacro Romano Impero","La traduzione rese il testo biblico più accessibile ai lettori germanofoni e contribuì alla diffusione della Riforma e allo sviluppo della lingua tedesca scritta."],
-[1527,1527,"Sacco di Roma","guerra","🇮🇹 🇩🇪 🇪🇸","Stati italiani e truppe imperiali","Le truppe al servizio di Carlo V, in gran parte lanzichenecchi, saccheggiarono Roma. L’evento mostrò la fragilità del papato nel conflitto tra le grandi potenze."],
-[1534,1534,"Atto di Supremazia e nascita della Chiesa anglicana","religione","🏴","Inghilterra","Con l’Atto di Supremazia, Enrico VIII si proclamò capo supremo della Chiesa d’Inghilterra, sancendo la rottura istituzionale con l’autorità papale."],
-[1540,1540,"Fondazione della Compagnia di Gesù","religione","🇻🇦 🇪🇸","Europa cattolica","I Gesuiti furono approvati da papa Paolo III. Si distinsero per istruzione, missioni e difesa della dottrina cattolica durante la Riforma cattolica."],
-[1542,1542,"Indizione del Concilio di Trento e istituzione dell’Inquisizione romana","religione","🇻🇦 🇮🇹","Stati italiani / Chiesa cattolica","La riorganizzazione dell’Inquisizione romana e la convocazione del concilio furono strumenti centrali della risposta cattolica alla diffusione delle dottrine protestanti."],
-[1545,1563,"Concilio di Trento","religione","🇮🇹 🇻🇦","Trento","Il concilio chiarì dottrine cattoliche, affrontò abusi e promosse riforme nella formazione del clero e nella disciplina ecclesiastica. Fu uno snodo fondamentale della Controriforma."],
-[1545,1547,"Prima fase del Concilio di Trento","religione","🇮🇹 🇻🇦","Trento","La prima fase avviò la discussione su Scrittura, tradizione e sacramenti, in un contesto di forte tensione confessionale."],
-[1545,1545,"Scoperta dei giacimenti d’argento di Potosí","esplorazioni","🇧🇴 🇪🇸","Vicereame del Perù / impero spagnolo","L’enorme produzione d’argento di Potosí alimentò i circuiti commerciali globali della monarchia spagnola, con conseguenze profonde sulle economie americane ed europee."],
-[1546,1546,"Morte di Martin Lutero","religione","🇩🇪","Sacro Romano Impero","Lutero morì mentre il conflitto confessionale era ancora aperto. Le sue idee avevano già trasformato in modo duraturo la vita religiosa e politica europea."],
-[1547,1547,"Battaglia di Mühlberg","guerra","🇩🇪","Sacro Romano Impero","Carlo V sconfisse le forze della Lega di Smalcalda. La vittoria imperiale fu importante, ma non risolse in modo definitivo la divisione religiosa."],
-[1551,1552,"Seconda fase del Concilio di Trento","religione","🇮🇹 🇻🇦","Trento","La seconda fase riprese i lavori conciliari, ma fu interrotta dalle tensioni militari e politiche nell’Impero."],
-[1555,1555,"Pace di Augusta e bolla di Paolo IV","politica","🇩🇪 🇻🇦","Sacro Romano Impero","La Pace di Augusta riconobbe ai principi imperiali la possibilità di scegliere tra cattolicesimo e luteranesimo. Nello stesso periodo si irrigidì la politica cattolica di controllo dottrinale."],
-[1556,1598,"Regno di Filippo II di Spagna","politica","🇪🇸","Spagna e domini asburgici","Filippo II governò una monarchia globale, impegnata nella difesa del cattolicesimo, nelle guerre europee e nella gestione di vasti territori oltremare."],
-[1558,1603,"Regno di Elisabetta I","politica","🏴","Inghilterra","Il regno di Elisabetta I consolidò la monarchia inglese e l’assetto protestante, mentre l’Inghilterra aumentava progressivamente il proprio ruolo marittimo."],
-[1559,1559,"Pace di Cateau-Cambrésis e primo Indice dei libri proibiti","politica","🇫🇷 🇪🇸 🇮🇹 🇻🇦","Europa occidentale","La pace pose fine a una lunga fase delle guerre d’Italia e rafforzò l’influenza spagnola nella penisola. L’Indice romano rifletteva il crescente controllo sulla circolazione delle idee."],
-[1562,1562,"Editto di Saint-Germain e massacro di Wassy","guerra","🇫🇷","Francia","L’inizio delle guerre di religione francesi fu segnato da scontri tra cattolici e protestanti ugonotti, con un intreccio di rivalità nobiliari e conflitto confessionale."],
-[1562,1563,"Terza fase del Concilio di Trento","religione","🇮🇹 🇻🇦","Trento","La fase conclusiva definì importanti decreti su sacramenti, disciplina e formazione del clero. I decreti furono poi recepiti e applicati nei territori cattolici."],
-[1564,1564,"Ratifica dei decreti tridentini con la bolla Benedictus Deus","religione","🇻🇦","Chiesa cattolica","Pio IV confermò i decreti del Concilio di Trento, dando impulso alla loro applicazione nella Chiesa cattolica."],
-[1571,1571,"Battaglia di Lepanto","guerra","🇪🇸 🇮🇹 🇬🇷 🇹🇷","Mediterraneo","La flotta della Lega Santa sconfisse quella ottomana nel golfo di Patrasso. La battaglia fu un importante successo cristiano, pur senza eliminare la potenza ottomana nel Mediterraneo."],
-[1572,1572,"Strage di San Bartolomeo","guerra","🇫🇷","Francia","Le uccisioni di protestanti ugonotti a Parigi e in altre città francesi segnarono una delle fasi più violente delle guerre di religione."],
-[1576,1576,"Sacco di Anversa e Unione di Gand","guerra","🇳🇱 🇪🇸","Paesi Bassi","Il saccheggio di Anversa da parte di soldati spagnoli ammutinati favorì la cooperazione tra province dei Paesi Bassi contro gli abusi militari e il governo di Filippo II."],
-[1577,1580,"Circumnavigazione del globo di Francis Drake","esplorazioni","🏴 🌍","Rotta oceanica","La spedizione di Drake completò la circumnavigazione del globo e rafforzò le ambizioni marittime inglesi, in un’epoca di rivalità con la Spagna."],
-[1581,1581,"Filippo II acquisisce la corona portoghese; indipendenza delle Province Unite","politica","🇪🇸 🇵🇹 🇳🇱","Europa occidentale","La crisi dinastica portoghese portò Filippo II a unire le corone iberiche. Nei Paesi Bassi settentrionali si consolidò invece il rifiuto della sovranità spagnola."],
-[1588,1588,"Sconfitta dell’Invincibile Armata","guerra","🇪🇸 🏴","Canale della Manica","La spedizione navale spagnola contro l’Inghilterra fallì tra resistenza inglese, condizioni meteorologiche e difficoltà logistiche. Non pose fine alla potenza spagnola, ma fu un passaggio simbolico."],
-[1598,1598,"Editto di Nantes e fine delle guerre di religione in Francia","politica","🇫🇷","Francia","Enrico IV concesse diritti limitati agli ugonotti e cercò di ristabilire la pace civile, pur mantenendo il cattolicesimo religione ufficiale."],
-[1600,1600,"Fondazione della Compagnia delle Indie Orientali inglese","esplorazioni","🏴 🌏","Inghilterra e Asia","La compagnia ottenne il monopolio inglese del commercio con l’Asia e divenne uno strumento centrale dell’espansione commerciale e coloniale."],
-[1603,1603,"Morte di Elisabetta I e ascesa di Giacomo I Stuart","politica","🏴","Inghilterra e Scozia","Con Giacomo I si unirono nella stessa persona le corone inglese e scozzese, aprendo la fase Stuart e nuove tensioni tra re e Parlamento."],
-[1607,1607,"Jamestown: primo insediamento inglese permanente in Virginia","esplorazioni","🏴 🇺🇸","Virginia","Jamestown divenne il primo insediamento inglese permanente di successo in Nord America, sebbene segnato da gravi difficoltà nei primi anni."],
-[1608,1608,"Unione evangelica","politica","🇩🇪","Sacro Romano Impero","Principi protestanti formarono un’alleanza difensiva nel clima di crescente polarizzazione confessionale che precedette la Guerra dei Trent’anni."],
-[1609,1609,"Lega cattolica e revoca della Lettera di maestà in Boemia","politica","🇩🇪 🇨🇿","Sacro Romano Impero / Boemia","La formazione di alleanze confessionali e la crisi dei diritti religiosi in Boemia aumentarono le tensioni che sarebbero esplose nel 1618."],
-[1618,1648,"Guerra dei Trent’anni","guerra","🇩🇪 🇨🇿 🇸🇪 🇫🇷 🇪🇸","Europa centrale","Iniziata dalla crisi boema, la guerra coinvolse progressivamente le principali potenze europee. Da conflitto anche confessionale si trasformò in una lotta per l’equilibrio politico europeo."],
-[1618,1625,"Fase boemo-palatina della Guerra dei Trent’anni","guerra","🇨🇿 🇩🇪","Boemia e Palatinato","La prima fase vide la rivolta degli Stati boemi contro gli Asburgo e la sconfitta dei ribelli, con conseguenze decisive per l’assetto religioso della regione."],
-[1618,1618,"Defenestrazione di Praga","guerra","🇨🇿","Praga, Boemia","I protestanti gettarono dalla finestra del castello alcuni funzionari imperiali, innescando la rivolta boema."],
-[1620,1620,"Battaglia della Montagna Bianca","guerra","🇨🇿 🇩🇪","Boemia","Le forze asburghe sconfissero i ribelli boemi, portando alla ricattolicizzazione della regione."],
-[1624,1624,"Richelieu diventa primo ministro in Francia","politica","🇫🇷","Francia","Richelieu rafforzò l’autorità monarchica e perseguì gli interessi francesi in Europa."],
-[1625,1629,"Fase danese della Guerra dei Trent’anni","guerra","🇩🇰 🇩🇪","Europa centrale","La Danimarca intervenne a sostegno dei protestanti ma fu sconfitta."],
-[1630,1635,"Fase svedese della Guerra dei Trent’anni","guerra","🇸🇪 🇩🇪","Europa centrale","La Svezia intervenne con Gustavo Adolfo modificando gli equilibri della guerra."],
-[1632,1632,"Battaglia di Lützen","guerra","🇸🇪 🇩🇪","Sassonia","Gli svedesi vinsero ma Gustavo Adolfo morì in battaglia."],
-[1635,1648,"Fase francese della Guerra dei Trent’anni","guerra","🇫🇷 🇪🇸 🇩🇪","Europa centrale e occidentale","La Francia entrò direttamente in guerra contro gli Asburgo."],
-[1643,1643,"Battaglia di Rocroi","guerra","🇫🇷 🇪🇸","Francia / Paesi Bassi spagnoli","Vittoria francese che segnò il declino dei tercios spagnoli."],
-[1648,1648,"Pace di Vestfalia","politica","🇩🇪 🇫🇷 🇸🇪","Europa centrale","Accordi che posero fine alla Guerra dei Trent’anni."]
+  // Categoria Verde
+  [1517, 1521, "Riforma luterana", "green"],
+  [1517, 1517, "1517-10-31 Martin Lutero affigge le 95 tesi", "green"],
+  [1519, 1556, "Impero di Carlo V", "green"],
+  [1555, 1555, "Pace di Augusta", "green"],
+  [1555, 1618, "Epoca della confessionalizzazione e tensioni nell'Impero", "green"],
+  [1618, 1648, "Guerra dei Trent'anni", "green"],
+  [1648, 1648, "Pace di Vestfalia", "green"],
+
+  // Categoria Viola
+  [1545, 1563, "Concilio di Trento e Controriforma", "purple"],
+
+  // Categoria Marrone
+  [1556, 1598, "Regno di Filippo II", "brown"],
+  [1566, 1581, "Rivolta dei Paesi Bassi", "brown"],
+  [1571, 1571, "1571-10-07 Battaglia di Lepanto", "brown"],
+
+  // Categoria Blu
+  [1534, 1534, "Atto di Supremazia di Enrico VIII", "blue"],
+  [1534, 1558, "Fase della Riforma e regno dei Tudor", "blue"],
+  [1558, 1603, "Epoca elisabettiana", "blue"],
+  [1588, 1588, "Sconfitta dell'Invincibile Armata", "blue"],
+
+  // Categoria Rossa
+  [1562, 1598, "Guerre di religione in Francia", "red"],
+  [1572, 1572, "Strage di san Bartolomeo", "red"],
+  [1598, 1598, "Editto di Nantes", "red"],
+  [1598, 1610, "Regno di Enrico IV", "red"],
+  [1610, 1624, "Regno di Maria de' Medici e successivamente di Luigi XIII", "red"],
+  [1624, 1642, "Governo di Richelieu e assolutismo", "red"]
 ];
-const cats={religione:{name:"Religione e Riforma",color:"var(--blue)"},guerra:{name:"Guerre e conflitti",color:"var(--red)"},politica:{name:"Politica e monarchie",color:"var(--green)"},esplorazioni:{name:"Esplorazioni ed economia",color:"var(--gold)"},cultura:{name:"Cultura e istituzioni",color:"var(--purple)"}};
-const periods=[
- {id:"early",from:1415,to:1499,title:"Dalle contestazioni alla Riforma",desc:"1415–1499 · Le prime contestazioni religiose"},
- {id:"reform",from:1500,to:1549,title:"La Riforma e Carlo V",desc:"1500–1549 · Riforma religiosa e trasformazioni politiche"},
- {id:"confessional",from:1550,to:1599,title:"Conflitti religiosi",desc:"1550–1599 · Guerre di religione ed espansione oltremare"},
- {id:"turn",from:1600,to:1617,title:"Inizio del Seicento",desc:"1600–1617 · Nuove alleanze ed espansione coloniale"},
- {id:"thirty",from:1618,to:1648,title:"Guerra dei Trent’anni e Vestfalia",desc:"1618–1648 · Il grande conflitto europeo"}
-];
-const home=document.getElementById('home'),detail=document.getElementById('detail'),grid=document.getElementById('periodGrid');
-const eventArea=document.getElementById('eventArea'),axis=document.getElementById('axis'),search=document.getElementById('search');
+
+const colors = {
+  green: "var(--green)",
+  purple: "var(--purple)",
+  brown: "var(--brown)",
+  blue: "var(--blue)",
+  red: "var(--red)"
+};
+
+const minYear = 1510;
+const maxYear = 1660;
+const scale = 25; // Pixel per anno per un layout ben distribuito
+
+const board = document.getElementById('board');
+const axis = document.getElementById('axis');
+const eventArea = document.getElementById('eventArea');
 const scrollContainer = document.getElementById('scroll');
-let active=null;
 
-function periodEvents(p){return events.filter(e=>e[0]>=p.from&&e[0]<=p.to);}
-periods.forEach(p=>{
- const list=periodEvents(p),b=document.createElement('button');b.className='period';b.style.setProperty('--accent',['var(--blue)','var(--green)','var(--gold)','var(--purple)','var(--red)'][periods.indexOf(p)]);
- b.innerHTML=`<div class="symbol">◷</div><h2>${p.title}</h2><p>${p.desc}</p><span class="count">${list.length} eventi</span><span class="go">Apri →</span>`;
- b.addEventListener('click',()=>openPeriod(p));grid.append(b);
-});
+function render() {
+  const boardWidth = (maxYear - minYear) * scale + 300;
+  board.style.width = boardWidth + 'px';
 
-function openPeriod(p){
-  active=p;
-  home.classList.add('hidden');
-  detail.classList.remove('hidden');
-  document.getElementById('periodTitle').textContent=p.title;
-  document.getElementById('periodDesc').textContent=p.desc;
-  search.value='';
-  render();
-  scrollContainer.scrollLeft = 0;
+  // Tacche degli anni (ogni 10 anni come nell'immagine)
+  for(let y = minYear; y <= maxYear; y += 10) {
+    const t = document.createElement('div');
+    t.className = 'tick';
+    t.style.left = ((y - minYear) * scale) + 'px';
+    t.innerHTML = `<span>${y}</span>`;
+    axis.append(t);
+  }
+
+  // Posizionamento delle schede a binari senza sovrapposizioni
+  const cardW = 230;
+  const cardH = 50;
+  const trackEnd = [];
+
+  events.sort((a, b) => a[0] - b[0] || a[1] - b[1]).forEach(e => {
+    const x = (e[0] - minYear) * scale;
+    let track = 0;
+
+    while (track < trackEnd.length && trackEnd[track] > x - 10) {
+      track++;
+    }
+    if (track === trackEnd.length) trackEnd.push(0);
+    trackEnd[track] = x + cardW;
+
+    const el = document.createElement('div');
+    el.className = 'event-card';
+    el.style.left = x + 'px';
+    el.style.top = (10 + track * cardH) + 'px';
+    el.style.setProperty('--accent', colors[e[3]]);
+    
+    const dateText = e[0] === e[1] ? `${e[0]}` : `${e[0]} / ${e[1]}`;
+    el.innerHTML = `<span class="date">${dateText}</span><span class="event-title">${e[2]}</span>`;
+    eventArea.append(el);
+  });
+  
+  eventArea.style.height = (trackEnd.length * cardH + 40) + 'px';
 }
 
-function backHome(){
-  detail.classList.add('hidden');
-  home.classList.remove('hidden');
-  active=null;
-}
+document.getElementById('scrollLeft').addEventListener('click', () => scrollContainer.scrollBy({ left: -300, behavior: 'smooth' }));
+document.getElementById('scrollRight').addEventListener('click', () => scrollContainer.scrollBy({ left: 300, behavior: 'smooth' }));
 
-function openEvent(e){
-  document.getElementById('modalDate').textContent=e[0]===e[1]?String(e[0]):`${e[0]}–${e[1]}`;
-  document.getElementById('modalTitle').textContent=e[2];
-  document.getElementById('modalFlags').textContent=`${e[4]}  ${e[5]}`;
-  document.getElementById('modalBody').textContent=e[6];
-  document.getElementById('modalMeta').textContent=cats[e[3]]?.name||'';
-  document.getElementById('overlay').classList.add('open');
-}
-
-function render(){
- const q=search.value.trim().toLocaleLowerCase('it');
- const list=events.filter(e=>e[0]>=active.from&&e[0]<=active.to&&(!q||e.slice(2).join(' ').toLocaleLowerCase('it').includes(q))).sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
- document.getElementById('count').textContent=`${list.length} eventi`;
- eventArea.innerHTML='';axis.innerHTML='';
- if(!list.length){eventArea.textContent='Nessun evento trovato.';return;}
- 
- const min=active.from, max=active.to;
- // Aumentiamo la scala per anno a 50px per allungare orizzontalmente lo spazio ed evitare congestione
- const scale = 50; 
- const cardW = 200; // larghezza scheda
- const cardH = 80;  // altezza + spaziatura tra righe
- const boardWidth = Math.max((max - min + 2) * scale + 400, 1200);
- 
- document.getElementById('board').style.width = boardWidth + 'px';
- document.getElementById('board').style.minWidth = boardWidth + 'px';
- 
- // Disegna le tacche degli anni
- for(let y=min; y<=max; y++){
-   const t=document.createElement('div');
-   t.className='tick';
-   t.style.left=(30+(y-min)*scale)+'px';
-   t.innerHTML=`<span>${y}</span>`;
-   axis.append(t);
- }
- 
- // Calcolo binari per prevenire sovrapposizioni
- const trackEnd = [];
- const placements = [];
- 
- list.forEach(e => {
-   const x = 30 + (e[0] - min) * scale;
-   let track = 0;
-   // Trova il primo binario libero che non si sovrappone orizzontalmente
-   while (track < trackEnd.length && trackEnd[track] > x - 15) {
-     track++;
-   }
-   if (track === trackEnd.length) trackEnd.push(0);
-   trackEnd[track] = x + cardW + 15;
-   placements.push({ e, x, track });
- });
- 
- const maxTrack = Math.max(...placements.map(p => p.track), 0);
- eventArea.style.height = Math.max(300, (maxTrack + 1) * cardH + 20) + 'px';
- 
- placements.forEach(({ e, x, track }) => {
-   const el = document.createElement('button');
-   el.className = 'event-card';
-   el.style.left = x + 'px';
-   el.style.top = (10 + track * cardH) + 'px';
-   el.style.setProperty('--accent', cats[e[3]]?.color || 'var(--blue)');
-   el.innerHTML = `<span class="date">${e[0]===e[1]?e[0]:e[0]+'–'+e[1]} · ${e[4]}</span><span class="event-title">${e[2]}</span><span class="flag">${cats[e[3]]?.name||''}</span>`;
-   el.addEventListener('click', () => openEvent(e));
-   eventArea.append(el);
- });
-}
-
-document.getElementById('scrollLeft').addEventListener('click', () => {
-  scrollContainer.scrollBy({ left: -400, behavior: 'smooth' });
-});
-document.getElementById('scrollRight').addEventListener('click', () => {
-  scrollContainer.scrollBy({ left: 400, behavior: 'smooth' });
-});
-
-document.getElementById('back').addEventListener('click',backHome);
-search.addEventListener('input',render);
-document.getElementById('close').addEventListener('click',()=>document.getElementById('overlay').classList.remove('open'));
-document.getElementById('overlay').addEventListener('click',e=>{if(e.target.id==='overlay')document.getElementById('overlay').classList.remove('open')});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('overlay').classList.remove('open')});
+render();
 </script></body></html>
