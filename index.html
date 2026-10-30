@@ -37,7 +37,6 @@ main{padding:12px 20px; width:100%; flex: 1; display: flex; flex-direction: colu
 .scroll-btn{cursor:pointer;padding:2px 8px;font-size:11px}
 .scroll-btn:hover{background:#233352}
 
-/* Modifica: disabilitato lo scroll verticale (overflow-y: hidden) e mantenuto solo quello orizzontale */
 .scroll{overflow-x:auto;overflow-y:hidden;flex:1;scrollbar-color:#607ba7 #182238;overscroll-behavior-x:contain;scroll-behavior:smooth; position: relative;}
 .board{position:relative;padding:0 20px 12px; height: 100%;}
 .axis{height:34px;position:sticky;top:0;z-index:8;background:#0e1728;border-bottom:1px solid #526482;margin:0 0 6px 0}
@@ -129,15 +128,15 @@ const events = [
 [1609,1609,"Lega cattolica e revoca della Lettera di maestà in Boemia","politica","🇩🇪 🇨🇿","Sacro Romano Impero / Boemia","La formazione di alleanze confessionali e la crisi dei diritti religiosi in Boemia aumentarono le tensioni che sarebbero esplose nel 1618."],
 [1618,1648,"Guerra dei Trent’anni","guerra","🇩🇪 🇨🇿 🇸🇪 🇫🇷 🇪🇸","Europa centrale","Iniziata dalla crisi boema, la guerra coinvolse progressivamente le principali potenze europee. Da conflitto anche confessionale si trasformò in una lotta per l’equilibrio politico europeo."],
 [1618,1625,"Fase boemo-palatina della Guerra dei Trent’anni","guerra","🇨🇿 🇩🇪","Boemia e Palatinato","La prima fase vide la rivolta degli Stati boemi contro gli Asburgo e la sconfitta dei ribelli, con conseguenze decisive per l’assetto religioso della regione."],
-[1618,1618,"Defenestrazione di Praga","guerra","🇨🇿","Praga, Boemia","I rappresentanti protestanti gettarono dalla finestra del castello alcuni funzionari imperiali. L’episodio divenne il simbolo della rivolta boema e l’innesco della guerra."],
-[1620,1620,"Battaglia della Montagna Bianca","guerra","🇨🇿 🇩🇪","Boemia","Le forze asburghe sconfissero i ribelli boemi. La vittoria portò a una dura repressione e alla ricattolicizzazione della Boemia."],
-[1624,1624,"Richelieu diventa primo ministro in Francia","politica","🇫🇷","Francia","Richelieu rafforzò l’autorità monarchica e perseguì gli interessi francesi in Europa, anche sostenendo avversari degli Asburgo nonostante le differenze confessionali."],
-[1625,1629,"Fase danese della Guerra dei Trent’anni","guerra","🇩🇰 🇩🇪","Europa centrale","La Danimarca intervenne a sostegno dei protestanti, ma fu sconfitta dalle forze imperiali, che ottennero temporaneamente una posizione dominante."],
-[1630,1635,"Fase svedese della Guerra dei Trent’anni","guerra","🇸🇪 🇩🇪","Europa centrale","La Svezia intervenne con Gustavo Adolfo a sostegno dei protestanti e per interessi strategici nel Baltico. La sua entrata modificò gli equilibri della guerra."],
-[1632,1632,"Battaglia di Lützen","guerra","🇸🇪 🇩🇪","Sassonia","Gli svedesi ottennero una vittoria tattica, ma Gustavo Adolfo morì in battaglia, privando la coalizione protestante del suo principal leader."],
-[1635,1648,"Fase francese della Guerra dei Trent’anni","guerra","🇫🇷 🇪🇸 🇩🇪","Europa centrale e occidentale","La Francia entrò direttamente in guerra contro gli Asburgo. La competizione dinastica e strategica divenne centrale accanto alle divisioni religiose."],
-[1643,1643,"Battaglia di Rocroi","guerra","🇫🇷 🇪🇸","Francia / Paesi Bassi spagnoli","La vittoria francese contro l’esercito spagnolo fu un momento simbolico del declino della reputazione militare dei tercios spagnoli."],
-[1648,1648,"Pace di Vestfalia","politica","🇩🇪 🇫🇷 🇸🇪","Europa centrale","Gli accordi di Vestfalia posero fine alla Guerra dei Trent’anni e ridisegnarono gli equilibri del Sacro Romano Impero, riconoscendo maggiore autonomia ai suoi Stati."]
+[1618,1618,"Defenestrazione di Praga","guerra","🇨🇿","Praga, Boemia","I protestanti gettarono dalla finestra del castello alcuni funzionari imperiali, innescando la rivolta boema."],
+[1620,1620,"Battaglia della Montagna Bianca","guerra","🇨🇿 🇩🇪","Boemia","Le forze asburghe sconfissero i ribelli boemi, portando alla ricattolicizzazione della regione."],
+[1624,1624,"Richelieu diventa primo ministro in Francia","politica","🇫🇷","Francia","Richelieu rafforzò l’autorità monarchica e perseguì gli interessi francesi in Europa."],
+[1625,1629,"Fase danese della Guerra dei Trent’anni","guerra","🇩🇰 🇩🇪","Europa centrale","La Danimarca intervenne a sostegno dei protestanti ma fu sconfitta."],
+[1630,1635,"Fase svedese della Guerra dei Trent’anni","guerra","🇸🇪 🇩🇪","Europa centrale","La Svezia intervenne con Gustavo Adolfo modificando gli equilibri della guerra."],
+[1632,1632,"Battaglia di Lützen","guerra","🇸🇪 🇩🇪","Sassonia","Gli svedesi vinsero ma Gustavo Adolfo morì in battaglia."],
+[1635,1648,"Fase francese della Guerra dei Trent’anni","guerra","🇫🇷 🇪🇸 🇩🇪","Europa centrale e occidentale","La Francia entrò direttamente in guerra contro gli Asburgo."],
+[1643,1643,"Battaglia di Rocroi","guerra","🇫🇷 🇪🇸","Francia / Paesi Bassi spagnoli","Vittoria francese che segnò il declino dei tercios spagnoli."],
+[1648,1648,"Pace di Vestfalia","politica","🇩🇪 🇫🇷 🇸🇪","Europa centrale","Accordi che posero fine alla Guerra dei Trent’anni."]
 ];
 const cats={religione:{name:"Religione e Riforma",color:"var(--blue)"},guerra:{name:"Guerre e conflitti",color:"var(--red)"},politica:{name:"Politica e monarchie",color:"var(--green)"},esplorazioni:{name:"Esplorazioni ed economia",color:"var(--gold)"},cultura:{name:"Cultura e istituzioni",color:"var(--purple)"}};
 const periods=[
@@ -168,7 +167,6 @@ function openPeriod(p){
   search.value='';
   render();
   scrollContainer.scrollLeft = 0;
-  scrollContainer.scrollTop = 0;
 }
 
 function backHome(){
@@ -204,22 +202,14 @@ function render(){
    axis.append(t);
  }
  
- const cardW=185,trackEnd=[],placements=[];
- list.forEach(e=>{
+ // Disposizione delle schede su un'unica riga orizzontale in sequenza
+ list.forEach((e, index)=>{
    const x=20+(e[0]-min)*scale;
-   let track=0;
-   while(track<trackEnd.length&&trackEnd[track]>x-12) track++;
-   if(track===trackEnd.length) trackEnd.push(0);
-   trackEnd[track]=x+cardW+12;
-   placements.push({e,x,track});
- });
- 
- const trackH=75;
- placements.forEach(({e,x,track})=>{
    const el=document.createElement('button');
    el.className='event-card';
    el.style.left=x+'px';
-   el.style.top=(8+track*trackH)+'px';
+   // Alternanza dell'altezza o posizionamento fisso in un'unica fascia orizzontale fluida
+   el.style.top=(index % 2 === 0 ? '8px' : '84px');
    el.style.setProperty('--accent',cats[e[3]]?.color||'var(--blue)');
    el.innerHTML=`<span class="date">${e[0]===e[1]?e[0]:e[0]+'–'+e[1]} · ${e[4]}</span><span class="event-title">${e[2]}</span><span class="flag">${cats[e[3]]?.name||''}</span>`;
    el.addEventListener('click',()=>openEvent(e));
